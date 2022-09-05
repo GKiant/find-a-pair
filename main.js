@@ -43,7 +43,7 @@
 
 		const setNumberOfPairs = document.createElement('input');
 		setNumberOfPairs.classList.add('form-control');
-		setNumberOfPairs.placeholder = 'Type even number 2-10'
+		setNumberOfPairs.placeholder = 'Type a number 2-10'
 
 		const startButton = document.createElement('button');
 		startButton.classList.add('btn', 'btn-primary');
