@@ -1,0 +1,158 @@
+.h1 {
+	margin-bottom: 20px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 15px;
+}
+.mb-3 {
+	margin: 0 auto;
+	max-width: 300px;
+}
+
+.btn {
+	margin-left: 10px;
+}
+
+.container-sm {
+	max-width: 80px;
+	margin: 25px auto;
+	text-align: center;
+	font-size: 35px;
+	font-weight: 500;
+	color: #333335;
+	border: 3px solid #333335;
+	border-radius: 10px;
+}
+
+.new-card {
+	position: relative;
+	z-index: 10;
+	margin-bottom: 10px;
+	min-width: 110px;
+	min-height: 147px;
+	background: url('./img/card.png') no-repeat center center transparent;
+	background-size: contain;
+	color: transparent;
+	transition: 0.15s ease-in-out;
+	cursor: pointer;
+}
+
+.new-card.success {
+	scale: 0.75;
+	cursor: auto;
+}
+
+.container-md {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	padding: 0 300px;
+}
+
+.container-md-3 {
+	padding: 0 372px;
+}
+
+.container-md-5 {
+	padding: 0 270px;
+}
+
+.container-md-9 {
+	padding: 0 200px;
+}
+
+ .new-card.opened-card-1 {
+	min-width: 110px;
+	min-height: 147px;
+	background: url('./img/ace_of_hearts.png') no-repeat center center transparent;
+	background-size: contain;
+	color: transparent;
+	cursor: auto;
+}
+
+.new-card.opened-card-2 {
+	min-width: 110px;
+	min-height: 147px;
+	background: url('./img/2_of_hearts.png') no-repeat center center transparent;
+	background-size: contain;
+	color: transparent;
+	cursor: auto;
+}
+
+.new-card.opened-card-3 {
+	min-width: 110px;
+	min-height: 147px;
+	background: url('./img/10_of_hearts.png') no-repeat center center transparent;
+	background-size: contain;
+	color: transparent;
+	cursor: auto;
+}
+
+.new-card.opened-card-4 {
+	min-width: 110px;
+	min-height: 147px;
+	background: url('./img/3_of_diamonds.png') no-repeat center center transparent;
+	background-size: contain;
+	color: transparent;
+	cursor: auto;
+}
+
+.opened-card-5 {
+	min-width: 110px;
+	min-height: 147px;
+	background: url('./img/3_of_hearts.png') no-repeat center center transparent;
+	background-size: contain;
+	color: transparent;
+	cursor: auto;
+}
+
+.opened-card-6 {
+	min-width: 110px;
+	min-height: 147px;
+	background: url('./img/6_of_clubs.png') no-repeat center center transparent;
+	background-size: contain;
+	color: transparent;
+	cursor: auto;
+}
+
+.opened-card-7 {
+	min-width: 110px;
+	min-height: 147px;
+	background: url('./img/8_of_clubs.png') no-repeat center center transparent;
+	background-size: contain;
+	color: transparent;
+	cursor: auto;
+}
+
+.opened-card-8 {
+	min-width: 110px;
+	min-height: 147px;
+	background: url('./img/ace_of_spades.png') no-repeat center center transparent;
+	background-size: contain;
+	color: transparent;
+	cursor: auto;
+}
+
+.opened-card-9 {
+	min-width: 110px;
+	min-height: 147px;
+	background: url('./img/jack_of_diamonds2.png') no-repeat center center transparent;
+	background-size: contain;
+	color: transparent;
+}
+
+.opened-card-10 {
+	min-width: 110px;
+	min-height: 147px;
+	background: url('./img/queen_of_spades2.png') no-repeat center center transparent;
+	background-size: contain;
+	color: transparent;
+	cursor: auto;
+
+} 
