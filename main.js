@@ -21,7 +21,6 @@
 			} else if (document.querySelectorAll('.new-card.success').length === finalArr.length) {
 				clearInterval(timer)
 				setTimeout(() => {
-					document.getElementById('card-container').style['display'] = 'none';
 					replayPageWin();
 				}, 500)
 			}
@@ -218,8 +217,8 @@
 			location.reload();
 		})
 
-		container.append(header);
-		container.append(replayButton);
+		document.getElementById('card-container').append(header);
+		document.getElementById('card-container').append(replayButton);
 	}
 
 	const replayPageLose = () => {
