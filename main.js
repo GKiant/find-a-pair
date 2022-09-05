@@ -21,7 +21,6 @@
 			} else if (document.querySelectorAll('.new-card.success').length === finalArr.length) {
 				clearInterval(timer)
 				setTimeout(() => {
-					// document.getElementById('card-container').style['display'] = 'none';
 					replayPageWin();
 				}, 500)
 			}
