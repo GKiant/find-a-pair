@@ -2,33 +2,6 @@
 	let container = document.getElementById('container');
 	const finalArr = [];
 
-	// Creating 60s timer after the submit button is activated to reload page after timer hits 0s
-	// Timer checking every sec if all pairs are found and if they do - shows new page
-	// with Replay button
-	const createTimer = () => {
-		let timeLeft = 60;
-		const timerWindow = document.createElement('div');
-		timerWindow.setAttribute('id', 'card')
-		timerWindow.classList.add('container-sm');
-		container.append(timerWindow)
-		timerWindow.textContent = timeLeft;
-
-		const timer = setInterval(() => {
-			if (timeLeft <= 0) {
-				clearInterval(timer)
-				document.getElementById('card-container').style['display'] = 'none';
-				replayPageLose();
-			} else if (document.querySelectorAll('.new-card.success').length === finalArr.length) {
-				clearInterval(timer)
-				setTimeout(() => {
-					replayPageWin();
-				}, 500)
-			}
-			timerWindow.textContent = timeLeft;
-			timeLeft -= 1;
-		}, 1000)
-	}
-
 	// Creating input to set number of pairs that will be in the game
 	let startingGameValue;
 
@@ -47,7 +20,6 @@
 		const startButton = document.createElement('button');
 		startButton.classList.add('btn', 'btn-primary');
 		startButton.textContent = 'Start';
-
 		startButton.disabled = true;
 
 		setNumberOfPairs.addEventListener('input', () => {
@@ -66,6 +38,11 @@
 
 		form.addEventListener('submit', (e) => {
 			e.preventDefault();
+
+			const cardContainer = document.createElement('div')
+			cardContainer.setAttribute('id', 'card-container')
+			cardContainer.classList.add('container-md')
+			document.body.append(cardContainer)
 
 			if (parseInt(setNumberOfPairs.value) < 2 || parseInt(setNumberOfPairs.value) > 10 || isNaN(parseInt(setNumberOfPairs.value))) {
 				startingGameValue = 4;
@@ -89,11 +66,10 @@
 					break;
 			}
 
-			setNumberOfPairs.value = ''
-			form.style['display'] = 'none';
-			header.style['display'] = 'none';
-			createTimer()
+			form.remove()
+			header.remove()
 			createNewGame()
+			createTimer()
 		})
 
 		return {
@@ -104,11 +80,40 @@
 	}
 	createInput();
 
+	// Creating 60s timer after the submit button is activated to stop game after timer hits 0s
+	// Timer checking every sec if all pairs are found and if they do - shows new page
+	// with Replay button
+	const createTimer = () => {
+		const timerWindow = document.createElement('div');
+		timerWindow.setAttribute('id', 'card-timer')
+		timerWindow.classList.add('container-sm');
+		container.append(timerWindow)
+
+		let timeLeft = 5;
+		timerWindow.textContent = timeLeft;
+
+		const timer = setInterval(() => {
+			if (timeLeft <= 0) {
+				clearInterval(timer)
+				document.getElementById('card-container').remove()
+				replayPageLose();
+			} else if (document.querySelectorAll('.new-card.success').length === finalArr.length) {
+				clearInterval(timer)
+				setTimeout(() => {
+					replayPageWin();
+				}, 350)
+			}
+			timerWindow.textContent = timeLeft;
+			timeLeft -= 1;
+		}, 1000)
+	}
+
 	// Function that takes starting game value from user-input and generates pairs of cards accordingly to a given number
 	// after that array of pairs is shuffled and printed on the page
 	const createNewGame = () => {
 		let newPair;
 		const arrOfPairs = [];
+
 		while (arrOfPairs.length < startingGameValue * 2) {
 			newPair = Math.round(Math.random() * (startingGameValue - 1) + 1);
 			if (arrOfPairs.indexOf(newPair) === -1) {
@@ -129,8 +134,6 @@
 		}
 
 		const shuffledArray = shuffle(arrOfPairs);
-
-		const cardContainer = document.getElementById('card-container');
 
 		let firstCard = null;
 		let secondCard = null;
@@ -158,7 +161,7 @@
 				// Checking current element Open\Success values to figure if we need to change them or not
 				set open(value) {
 					this._open = value;
-					value ? this.newCard.classList.add(`opened-card-${e}`) : this.newCard.classList.remove(`opened-card-${e}`);
+					value ? this.newCard.classList.add('opened-card', `opened-card-${e}`) : this.newCard.classList.remove('opened-card', `opened-card-${e}`);
 				}
 				get open() {
 					return this._open;
@@ -172,7 +175,7 @@
 				}
 			}
 
-			// Function that checks cards conditions and flips them depends on their state
+			// Function that checks cards conditions and flips them depending on their state
 			const flip = (card) => {
 				if (firstCard !== null && secondCard !== null) {
 					if (firstCard.number !== secondCard.number) {
@@ -200,7 +203,7 @@
 					}
 				}
 			}
-			finalArr.push(new Card(cardContainer, e, flip))
+			finalArr.push(new Card(document.getElementById('card-container'), e, flip))
 		})
 	}
 
@@ -213,15 +216,24 @@
 		replayButton.classList.add('btn', 'btn-primary');
 		replayButton.textContent = "Let's Go";
 
-		replayButton.addEventListener('click', () => {
-			location.reload();
-		})
-
 		document.getElementById('card-container').append(header);
 		document.getElementById('card-container').append(replayButton);
+
+		replayButton.addEventListener('click', () => {
+			document.getElementById('card-timer').remove()
+			document.getElementById('card-container').remove()
+
+			finalArr.length = 0;
+
+			createInput();
+		})
 	}
 
 	const replayPageLose = () => {
+		const wrapper = document.createElement('div');
+		wrapper.setAttribute('id', 'wrapper');
+		wrapper.classList.add('loser-page-wrapper')
+
 		const header = document.createElement('h1');
 		header.classList.add('h1');
 		header.textContent = `You get nothing! You Lose! Good day Sir!`;
@@ -230,11 +242,17 @@
 		replayButton.classList.add('btn', 'btn-primary');
 		replayButton.textContent = "One more time";
 
-		replayButton.addEventListener('click', () => {
-			location.reload();
-		})
+		container.append(wrapper);
+		wrapper.append(header);
+		wrapper.append(replayButton);
 
-		container.append(header);
-		container.append(replayButton);
+		replayButton.addEventListener('click', () => {
+			document.getElementById('card-timer').remove()
+			wrapper.remove()
+
+			finalArr.length = 0;
+
+			createInput();
+		})
 	}
 })();

@@ -9,6 +9,7 @@
 	justify-content: center;
 	margin-top: 15px;
 }
+
 .mb-3 {
 	margin: 0 auto;
 	max-width: 300px;
@@ -67,92 +68,67 @@
 	padding: 0 200px;
 }
 
+.loser-page-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
  .new-card.opened-card-1 {
-	min-width: 110px;
-	min-height: 147px;
 	background: url('./img/ace_of_hearts.png') no-repeat center center transparent;
 	background-size: contain;
-	color: transparent;
-	cursor: auto;
 }
 
 .new-card.opened-card-2 {
-	min-width: 110px;
-	min-height: 147px;
 	background: url('./img/2_of_hearts.png') no-repeat center center transparent;
 	background-size: contain;
-	color: transparent;
-	cursor: auto;
 }
 
 .new-card.opened-card-3 {
-	min-width: 110px;
-	min-height: 147px;
 	background: url('./img/10_of_hearts.png') no-repeat center center transparent;
 	background-size: contain;
-	color: transparent;
-	cursor: auto;
 }
 
 .new-card.opened-card-4 {
-	min-width: 110px;
-	min-height: 147px;
 	background: url('./img/3_of_diamonds.png') no-repeat center center transparent;
 	background-size: contain;
-	color: transparent;
-	cursor: auto;
 }
 
 .opened-card-5 {
-	min-width: 110px;
-	min-height: 147px;
 	background: url('./img/3_of_hearts.png') no-repeat center center transparent;
 	background-size: contain;
-	color: transparent;
-	cursor: auto;
 }
 
 .opened-card-6 {
-	min-width: 110px;
-	min-height: 147px;
 	background: url('./img/6_of_clubs.png') no-repeat center center transparent;
 	background-size: contain;
-	color: transparent;
-	cursor: auto;
 }
 
 .opened-card-7 {
-	min-width: 110px;
-	min-height: 147px;
 	background: url('./img/8_of_clubs.png') no-repeat center center transparent;
 	background-size: contain;
-	color: transparent;
-	cursor: auto;
 }
 
 .opened-card-8 {
-	min-width: 110px;
-	min-height: 147px;
 	background: url('./img/ace_of_spades.png') no-repeat center center transparent;
 	background-size: contain;
-	color: transparent;
-	cursor: auto;
 }
 
 .opened-card-9 {
-	min-width: 110px;
-	min-height: 147px;
 	background: url('./img/jack_of_diamonds2.png') no-repeat center center transparent;
 	background-size: contain;
-	color: transparent;
 }
 
 .opened-card-10 {
+	background: url('./img/queen_of_spades2.png') no-repeat center center transparent;
+	background-size: contain;
+} 
+
+.opened-card {
 	min-width: 110px;
 	min-height: 147px;
-	background: url('./img/queen_of_spades2.png') no-repeat center center transparent;
 	background-size: contain;
 	color: transparent;
 	cursor: auto;
-
 } 
