@@ -89,7 +89,7 @@
 		timerWindow.classList.add('container-sm');
 		container.append(timerWindow)
 
-		let timeLeft = 5;
+		let timeLeft = 60;
 		timerWindow.textContent = timeLeft;
 
 		const timer = setInterval(() => {
