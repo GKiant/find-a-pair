@@ -74,7 +74,7 @@
 			}
 
 			// Adding conditions to apply different CSS just to make field look good regardless of the number of pairs
-			switch(startingGameValue) {
+			switch (startingGameValue) {
 				case 3:
 					document.getElementById('card-container').classList.add('container-md-3');
 					break;
@@ -118,13 +118,13 @@
 		}
 
 		// Taking array of pairs and returns shuffled array
-		function shuffle(array) {
+		const shuffle = (array) => {
 			let indexHolder = array.map((item, index) => index);
 			return array.map((item, index, array) => {
-				const random_index = Math.floor(Math.random() * indexHolder.length);
-				const indexHolder_value = indexHolder[random_index];
-				indexHolder.splice(random_index, 1);
-				return array[indexHolder_value];
+				const randomIndex = Math.floor(Math.random() * indexHolder.length);
+				const indexHolderValue = indexHolder[randomIndex];
+				indexHolder.splice(randomIndex, 1);
+				return array[indexHolderValue];
 			})
 		}
 
@@ -154,7 +154,7 @@
 					});
 					container.append(this.newCard);
 				}
-				
+
 				// Checking current element Open\Success values to figure if we need to change them or not
 				set open(value) {
 					this._open = value;
